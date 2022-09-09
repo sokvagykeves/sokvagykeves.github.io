@@ -1,0 +1,110 @@
+
+ * 2018.07.21.
+
+ - FB like-olás kezelése
+   + létrehoztam egy FB oldalt néki
+     - profilkép meg borítókép persze nem ártana :)
+   [1] módszer: ahogy az UP esetén csináltam
+       = a megfelelő FB-oldalra vonatkoznak a dolgok, nem magára a honlapra
+         = a FB-oldal van beállítva a href paraméterben
+       - hm.. így kedveléskor feldob egy ablakot,
+         hogy tényleg akarod-e kedvelni a hivatkozott FB-oldalt,
+         ez csökkentheti a like-olási kedvet
+       - megosztásnál a FB-oldalt osztja meg -- ami rondább! :)
+         ! jó lenne magát a honlapot, ezt különvett "megosztás" gombbal
+           lehetne esetleg, amit alább írogatok :)
+       + ilyenkor a like-ok a FB oldalon gyűlnek, ez működik is! :)
+         - csak miért nem töltődik be az Elemzések/Kedvelések oldal? XXX
+   [2] módszer: esetleg a Google Analytics lenne a megoldás? Hogyan? :)
+   x3] módszer: http://www.facebook.com/insights
+       -- ezt ajánlgatják (2011 tájékán), de nem elérhető, elavult sajna
+
+-----
+
+ * 2018.07.16.
+
+ - megoszthatóvá tenni a kiegészített listát -- ld. a html-ben a tippeket
+
+ - amit vki beír, azt logoljuk
+   - nyilván serveroldalon és nyilván biztonságosítani kell! :)
+   - hogy lehet ezt megvalósítani?
+   - a log alapján lehet új hivatalos bejegyzéseket létrehoznom
+     sok hasonlóból
+     (de nem kell túl sok, vőgülis elég pár standard,
+      mint régen a lélegeztetőgép volt: Kőröshegyi, 4-es m, Quaestor...)
+
+ - ha vki olyat ír be, ami már van, jöjjön rá! :)
+   - ez már nyelvtech :)
+
+ - katt: vessen össze kettőt a listából = exponenciális összevetés
+   - ha már hozzátettünk, akkor nyilván lehet
+     2 eredetit, 1 eredetit + 1 újat, 2 újat
+
+ - lehessen törölni is a listából,
+   hogy csak az látszódjon, ami vkit épp érdekel...
+   ill. hogy a hozzátetteket törölhesse, ha mégse kellenek...
+
+ e php/js: vannak online felületek, ahol ki lehet próbálni
+
+-----
+
+ - ez lenne a cél, az üzenet:
+   i "A 10 és a 10000 Ft-ot jól el tudjuk különíteni egymástól.
+      Próbáljuk meg hasonlóan a 100 M-t és a 100 Mrd-ot! :)"
+     + mondjuk mottóba már kiírtam ezt
+   * "Magunkfajta halandó nem is tudja ennek az összegnek
+      a nagyságát felbecsülni" - Orbán Viktor, 2018.03.19.
+     - pont ebben próbálna segíteni ez az oldal
+
+ - átstrukturálni "adatbázissá"
+   - a minimalizmus maradjon, link pl. nem kell! :)
+
+ - tök jó lenne olyan, hogy kettőre rákattintok, és azt összeveti, hogy
+   hányszoros, hány %... - ó, plusz esetleg még képpel: 4-esM = Q + Q :)
+   - vhol egy textboxban szépen kiírja a 2 izé összehasonlítását
+     - ehhez simán elég a php/js sztem :)
+     - szépen értelmes szöveggel legyen az összehasonlítás :)
+ - és aztán: az Ön kedvence, írja be! :)
+   Egy tetszőleges felhasználói input adatot helyezzen el a skálán! :)
+
+ - log skála reklámozása
+   + 2018.07.14. csináltam ilyen log skálát, hogy 10..100 10 részre osztva
+                            igazi-exponenciális 10^(1+x/10)
+     1        10        100    100    =
+     4/5       8         80     79,4  0,6
+     2/3~3/5   6,6~6     60     63,1  3,1* 
+     1/2       5         50     50,1  0,1
+     2/5       4         40     39,8  0,2
+     1/3~3/10  3,3~3     30     31,6  1,6*
+     1/4       2,5       25     25,1  0,1
+     1/5       2         20     20    = 
+     1/6~3/20  1,5~3/2   15     15,8  0,8*
+     1/8       1,25~5/4  12,5   12,6  0,1
+     1/10      1         10     10    =
+     ! ilyen kategóriák lehetnének az összevetésben! (!) XXX :)
+       pl.: 44..244  5,54 -> 5
+            44..144  3,27 -> 3,3
+            44..100  2,27 -> 2..2,5 (exponenciálisan melyikhez van közelebb?)
+            44..80   1,81 -> 1,5..2
+            44..70   1,59 -> 1,5
+            44..65   1,48 -> 1,5
+            44..60   1,36 -> 1,25..1,5
+            44..55   1,25 -> 1,25
+            44..50   1,14 -> 1..1,25
+            44..47   1,06 -> 1
+     ! hm.. vagy maradjunk a %-os különbségeknél
+     ! ki kell találni, hogy mi néz ki a legjobban! (!) XXX :)
+   - így akkor a 25% eltérés az a valami
+     ha ez túl sok lenne, akkor lehetne "ponto mód", ami
+     pontos %-okat, számokat ad, a "szemléletes mód"-dal szemben,
+     ami ugye a 25%-os lépésű exponenciális/logaritmikus lenne
+
+ - nagyon kell/illik hozzá: Paulos: Számvakság c. könyv! -- megvenni! :)
+
+ - de jó lenne scp
+   * 2018.07.16. írtam nekik erről
+
+-----
+
+ + 2018.07.13. elindult a sokvagykeves.hu :)
+
